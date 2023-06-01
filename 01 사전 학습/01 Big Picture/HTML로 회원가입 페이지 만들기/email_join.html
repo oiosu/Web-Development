@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <h2>이메일로 가입</h2>
+      <!-- 이메일 가입  -->
+      <!-- required는 무조건 입력을 해야 제출 버튼이 눌러진다 -->
+      <div><label for="email-input">여기에 이메일을 입력하세요!</label></div>
+      <div>
+        <input
+          id="email-input"
+          required
+          placeholder="이메일 주소를 입력해주세요"
+          type="email"
+        />
+      </div>
+
+      <!-- 비밀 번호  -->
+      <div><label for="password-input">비밀번호</label></div>
+      <div>
+        <input
+          id="password-input"
+          required
+          placeholder="특수문자 포함"
+          type="password"
+        />
+      </div>
+
+      <!-- 비밀번호 확인 -->
+      <div><label for="password2-input">비밀번호 확인</label></div>
+      <div>
+        <input
+          id="password2-input"
+          required
+          placeholder="비밀번호 확인"
+          type="password"
+        />
+      </div>
+
+      <!-- 이름 -->
+      <div><label for="name-input">이름</label></div>
+      <div>
+        <input
+          id="name-input"
+          required
+          placeholder="이름을 입력해주세요"
+          type="text"
+        />
+      </div>
+
+      <!-- 휴대폰 번호 -->
+      <div><label for="phone-input">이름</label></div>
+      <div>
+        <input
+          id="phone-input"
+          required
+          placeholder="번호를 입력해주세요"
+          type="number"
+        />
+      </div>
+
+      <!-- 체크 박스  -->
+      <div>
+        <label for="checkbox-input">여기를 체크해주세요</label>
+        <input id="checkbox-input" required type="checkbox" />
+      </div>
+
+      <!-- 제출버튼 -->
+      <div>
+        <input type="submit" />
+      </div>
+    </form>
+  </body>
+</html>
