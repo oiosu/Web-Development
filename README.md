@@ -72,4 +72,27 @@
 
 ---
 
+# ⭐ SECTION 01. HTML, CSS
+#### 🧙 프론트엔드 개발자의 역할 
+1. 디자인 및 레이아웃 <br>
+: html, css를 이용해서 웹 페이지의 디자인, 레이아웃, 색상 다양한 것들을 수정한다. <br>
+2. 사용자 경험 개선 <br>
+: 자바스크립트를 이용해서 사용자와 소통하는 부분을 조정하기도 한다. <br>
+: 사용자들의 불편함을 개선하는 UX를 개선하는 부분도 프론트엔드 개발자의 역할이다. <br>
+3. 백엔드와 소통 <br>
+: 백엔드와 어떤 포맷으로 데이터를 주고 받을지에 대해 소통한다. <br>
+: 백엔드 개발자 뿐 만 아니라 많은 사람들과 소통이 필요하다. (협업에서 더 많은 회의에 참석한다) <br>
+
+#### ◾ HTML, CSS, JavaScript
+* HTML(HyperText Markup Language) : 웹 페이지 표시를 위해 개발된 지배적인 마크업 언어
+* CSS(Cascading Style Sheets) : 색상, 크기, 폰트, 레이아웃 등의 시각적인 표현
+* JavaScript : 프론트엔드의 동적인 요소추가, 이벤트 처리, 백엔드와 데이터 주고 받는 등
+
+
+#### 📂 [간단한 회원가입 페이지 만들기 코드 확인하기](https://github.com/oiosu/Web-Development/blob/master/01%20%EC%82%AC%EC%A0%84%20%ED%95%99%EC%8A%B5/01%20Big%20Picture/HTML%EB%A1%9C%20%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%EB%A7%8C%EB%93%A4%EA%B8%B0/email_join.html)  
+> ![image](https://github.com/oiosu/Web-Development/assets/99783474/29e67795-f9e0-4bd5-917e-4bae931b4e5d)
+> #### Form 태그 
+> `<form>` `<input>`
+> #### HTML 태그의 attribute(속성)
+> `<class>` `<id>` `<data>` `<style>`
 
