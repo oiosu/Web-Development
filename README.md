@@ -72,7 +72,7 @@
 
 ---
 
-# ⭐ SECTION 01. HTML, CSS
+# ⭐ SECTION 01. HTML, CSS, JavaScript
 #### 🧙 프론트엔드 개발자의 역할 
 1. 디자인 및 레이아웃 <br>
 : html, css를 이용해서 웹 페이지의 디자인, 레이아웃, 색상 다양한 것들을 수정한다. <br>
