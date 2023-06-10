@@ -39,7 +39,7 @@
 
 ### 📌 [WEB?](https://github.com/oiosu/Web-Development/blob/master/01%20%EC%82%AC%EC%A0%84%20%ED%95%99%EC%8A%B5/3.%20%EC%9B%B9%20%EB%A1%9C%EB%93%9C%EB%A7%B5.md) 
 #### ◾ WEB? 웹이란?
-> 다양한 분야 중에서 프론트엔드와 백엔드로 크게 구분되고 있는 웹 구조 이해하기 
+> 다양한 분야 중에서 프론트엔드와 백엔드로 크게 구분되고 있는 웹 구조 이해하기 <>
 > WEB, APP(iOS, android), PC 등 
 
 #### ◾ 웹은 어떻게 동작하나요? 
