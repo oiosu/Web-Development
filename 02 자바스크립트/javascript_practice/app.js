@@ -1,9 +1,15 @@
-// 3가지 타입의 변수 지정 방법 : const, let, var
-const mackbook = "300";
-let ipad = "100";
-// var는 오래된 변수 지정 방법이다. 
-var iphone = "200";
+const timeElement = document.querySelector(".time");
 
-console.log("mackbook", mackbook);
-console.log("ipad", ipad);
-console.log("iphone", iphone);
+function 색깔을_바꿔주는_함수() {
+  if (timeElement.style.color === "orange") {
+    timeElement.style.color = "blue";
+  } else {
+    timeElement.style.color == "orange";
+  }
+}
+
+function 숫자를_바꿔주는_함수() {
+  timeElement.innerText = "12:00";
+}
+
+timeElement.addEventListener("mouseover", 색깔을_바꿔주는_함수());
