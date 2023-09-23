@@ -4,7 +4,7 @@
 
 * **백엔드 서버 만들기** 
 
-```java
+```python
 from fastapi import FastAPI
     
 app = FastAPI()

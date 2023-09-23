@@ -35,3 +35,103 @@
 
 
 
+---
+
+
+
+## 3. FastAPI로 간단한 API서버 만들기 
+
+* **FastAPI** : FastAPI프레임워크, 고성능, 간편한 학습, 빠른 코드 작성, 준비된 프로덕션 (프레임워크 : 우리가 필요한 기능들을 모아놓는 개발키트)
+
+
+
+##### 1. Fastapi 설치하기 
+
+```bash
+pip install fastapi
+```
+
+
+
+##### 2. 공식문서 참고하여 간한 API 서버 코드 작성하기 
+
+```python
+from fastapi import FastAPI
+    
+app = FastAPI()
+    
+@app.get("/hello")
+def hello():
+	return {"message": "안녕하세요 여러분"}
+```
+
+
+
+##### 3. API를 띄어줄 수 있는 웹서버 만들기 
+
+* `uvicorn` 이라는 웹 서버 이용하기 
+
+**3-1. `uvicorn standard` 버전 설치하기**
+
+```BASH
+pip install uvicorn[standard]
+```
+
+
+
+**3-2. 앱 서버 설치 후 확인하기** 
+
+```bash
+uvicorn main:app --reload
+```
+
+> * uvicorn
+>
+> : uvicorn 이라는 웹 서버 이용하여 fastapi 띄운다.
+>
+> * main: 
+>
+> main.py 안에 있는 파일을 실행시킨다. 
+>
+> * app
+>
+> main.py 안에 있는 앱이라는 객체를 실행시킨다. 
+
+
+
+**3-3. 결과** 
+
+```bash
+$ uvicorn main:app --reload
+INFO:     Will watch for changes in these directories: ['C:\\Users\\areur\\Desktop\\Web Development\\백엔드 CRUD\\PYTHON']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [27544] using WatchFiles  
+INFO:     Started server process [10024]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+```
+
+> `http://127.0.0.1:8000/`
+>
+> * 로컬 호스트 : `http://127.0.0.1`
+> * 8000 번 방 
+>
+> `@app.get("/hello")` hello 라는 경로로 만들어줬기 때문에 주소 추가하기 
+>
+> `http://127.0.0.1:8000/hello`
+>
+> ![image-20230923155119546](C:\Users\areur\AppData\Roaming\Typora\typora-user-images\image-20230923155119546.png)
+
+
+
+◾ `http://127.0.0.1:8000/docs` 라고 검색하면 Fastapi가 어떤 API를 사용하고 있는지 알 수 있다. 
+
+![image-20230923155251371](C:\Users\areur\AppData\Roaming\Typora\typora-user-images\image-20230923155251371.png)
+
+
+
+##### ◾ WHY FastAPI?
+
+> : 빠르고 간편하다, 비동기를 지원한다, 문서화를 자동으로 해줌으로써 관리가 편안하다 
+>
+> : Django나 Flask도 많이 쓰인다. 
