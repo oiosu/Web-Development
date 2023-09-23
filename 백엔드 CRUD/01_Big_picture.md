@@ -56,3 +56,45 @@ def hello():
 
 
 
+---
+
+
+
+#### 🔻 Python 기본 설정 하기 
+
+> 1. python 다운로드 하기 
+> 2. vscode > 확장 > (1) python (2) python extension pack 설치
+
+```python
+a = 2
+print(2)
+```
+
+```python
+def sayHello():
+    print('안녕하세요!!')
+sayHello()
+```
+
+
+
+* ##### python vs JS
+
+```PYTHON
+for i in range(1,5):
+    pritn(i)
+```
+
+```javascript
+for (let i=0 ; i<5; i++){
+    consolog.log(i)
+}
+```
+
+
+
+
+
+* ##### 기초 문법 
+
+> 번수선언, 배열, 클래서(객체지향), 함수, 조건문, 연산자
