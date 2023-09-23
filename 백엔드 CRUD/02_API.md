@@ -120,13 +120,14 @@ INFO:     Application startup complete.
 >
 > `http://127.0.0.1:8000/hello`
 >
-> ![image-20230923155119546](C:\Users\areur\AppData\Roaming\Typora\typora-user-images\image-20230923155119546.png)
+> ![image](https://github.com/oiosu/Web-Development/assets/99783474/1c8c620d-aa93-4bbb-9cda-2bd3699eaed3)
+
 
 
 
 ◾ `http://127.0.0.1:8000/docs` 라고 검색하면 Fastapi가 어떤 API를 사용하고 있는지 알 수 있다. 
 
-![image-20230923155251371](C:\Users\areur\AppData\Roaming\Typora\typora-user-images\image-20230923155251371.png)
+![image](https://github.com/oiosu/Web-Development/assets/99783474/2220a655-588c-4585-aa7c-a1659580c507)
 
 
 
