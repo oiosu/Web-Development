@@ -32,7 +32,7 @@
 
 ---
 
-### 📌 [블로코딩 실습](https://github.com/oiosu/Web-Development/blob/master/01%20%EC%82%AC%EC%A0%84%20%ED%95%99%EC%8A%B5/2.%20%EB%B8%94%EB%A1%9D%EC%BD%94%EB%94%A9%20%EC%8B%A4%EC%8A%B5.md)  
+### 📌 [블록코딩 실습](https://github.com/oiosu/Web-Development/blob/master/01%20%EC%82%AC%EC%A0%84%20%ED%95%99%EC%8A%B5/2.%20%EB%B8%94%EB%A1%9D%EC%BD%94%EB%94%A9%20%EC%8B%A4%EC%8A%B5.md)  
 > [코드 없이 프로그램 만들기](https://scratch.mit.edu/projects/editor/?tutorial=getStarted) 
 
 ---

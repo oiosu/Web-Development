@@ -120,13 +120,14 @@ INFO:     Application startup complete.
 >
 > `http://127.0.0.1:8000/hello`
 >
-> ![image-20230923155119546](C:\Users\areur\AppData\Roaming\Typora\typora-user-images\image-20230923155119546.png)
+> ![image](https://github.com/oiosu/Web-Development/assets/99783474/1c8c620d-aa93-4bbb-9cda-2bd3699eaed3)
+
 
 
 
 ◾ `http://127.0.0.1:8000/docs` 라고 검색하면 Fastapi가 어떤 API를 사용하고 있는지 알 수 있다. 
 
-![image-20230923155251371](C:\Users\areur\AppData\Roaming\Typora\typora-user-images\image-20230923155251371.png)
+![image](https://github.com/oiosu/Web-Development/assets/99783474/2220a655-588c-4585-aa7c-a1659580c507)
 
 
 
@@ -142,6 +143,7 @@ INFO:     Application startup complete.
 > : 빠르고 간편하다, 비동기를 지원한다, 문서화를 자동으로 해줌으로써 관리가 편안하다 
 >
 > : Django나 Flask도 많이 쓰인다. 
+<<<<<<< HEAD
 
 
 
@@ -327,3 +329,5 @@ def post_item(item: Item):
 >
 > > 요청으로 들어온 아이템의 콘텐츠를 추가하기 
 
+=======
+>>>>>>> 30ad1a83fb0762abe7337ee0e59d215add4e81c6
