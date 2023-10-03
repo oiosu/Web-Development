@@ -130,8 +130,200 @@ INFO:     Application startup complete.
 
 
 
+```bash
+* FashAPI로 정말 Fast하게 웹서버를 제작!
+* 특정 요청에 대한 응답을 하는 프로그램
+```
+
+
+
 ##### ◾ WHY FastAPI?
 
 > : 빠르고 간편하다, 비동기를 지원한다, 문서화를 자동으로 해줌으로써 관리가 편안하다 
 >
 > : Django나 Flask도 많이 쓰인다. 
+
+
+
+---
+
+
+
+## 4. 백엔드에게 정보를 보내는 방식 
+
+##### ◾ 백엔드에게 정보를 보내는 방법들 
+
+##### 1. Path parameter
+
+##### 2. Query parameter
+
+##### 3. Request Body
+
+
+
+##### 🔻 BEST PRACTICE!
+
+> 어떤 리소스를 식별하고 싶으면 `PATH`
+>
+> 정렬이나 필터링을 한다면 `QUERY`
+
+
+
+**(1) 어떤 리소스를 식별하고 싶으면 `PATH`**
+
+```BA
+/users/123
+```
+
+> `/`슬래시를 통해서 구분을 하고 있다. 
+>
+> id가 123인 user
+>
+> =====> 딱 1명인 user를 가리킨다. 
+
+
+
+**(2) 정렬이나 필터링을 한다면 `QUERY`**
+
+```bash
+/user?age=20
+```
+
+> 나이가 20살인 users
+>
+> =====> 20살인 유저들이 많을 수도 있고 없을 수도 있다. 
+>
+> 20살인 유저를 정렬하거나 필터링 할때 쓰는 게 보통 쿼리이다. 
+
+
+
+##### 1. main.py
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+items = ['맥북', '애플패드', '아이폰', '에어팟']
+
+
+@app.get('/items')
+def read_items():
+    return items
+
+```
+
+```bash
+uvicorn main:app --reload
+```
+
+```bash
+$ uvicorn main:app --reload
+INFO:     Will watch for changes in these directories: ['C:\\Users\\areur\\Desktop\\Web Development\\백엔드 CRUD\\PYTHON']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [27560] using WatchFiles  
+INFO:     Started server process [27748]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:57395 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57400 - "GET /items HTTP/1.1" 200 OK
+```
+
+
+
+##### 2. main.py 
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+items = ['맥북', '애플패드', '아이폰', '에어팟']
+
+
+@app.get('/items')
+def read_items():
+    return items
+
+# 뒤로 들어온 id라는 변수를 통해 read id item이라는 함수 호출하기
+
+
+@app.get('/items/{id}')
+def read_id_item(id):
+    return items[id]
+```
+
+```bash
+http://127.0.0.1:8000/items
+```
+
+![image-20230923163520726](C:\Users\areur\AppData\Roaming\Typora\typora-user-images\image-20230923163520726.png)
+
+
+
+##### 3. main.py (쿼리)
+
+```python
+@app.get('/items/{id}')
+def read_id_item(id):
+    return items[int(id)]
+
+
+@app.get('/items')
+def read_item(skip: int = 0, limit: int = 0):
+    return items[skip:skip+limit]
+```
+
+> skip이라는 query는 int(숫자값), 초기에는 0 이다.
+>
+> 아무것도 안들어 오면 0의 값을 갖는
+>
+> * 요청 보내기 : `:8000/items?skip=1&limit=2`
+> * 결과값 : 애플패드, 아이폰 
+
+
+
+##### 4. BaseModel
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+
+class Item(BaseModel):
+    id: int
+    content: str
+
+
+items = ['맥북', '애플패드', '아이폰', '에어팟']
+
+
+@app.get('/items/{id}')
+def read_id_item(id):
+    return items[int(id)]
+
+
+@app.get('/items')
+def read_item(skip: int = 0, limit: int = 0):
+    return items[skip:skip+limit]
+
+
+@app.post("/items")
+def post_item(item: Item):
+    return '성공했습니다!'
+
+```
+
+> 보통 post는 서버의 값을 업데이트 할때 사용한다. 
+>
+> ```python
+> @app.post("/items")
+> def post_item(item: Item):
+>     items.append(item.content)
+>     return '성공했습니다!'
+> ```
+>
+> > 요청으로 들어온 아이템의 콘텐츠를 추가하기 
+
