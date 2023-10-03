@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 # 객체로 어떤 request body로 받으려면 메모라는 클래스를 지정해줘야한다. 
 class Memo(BaseModel):
-    id:str
+    id:int
     content:str
 # memos라는 배열을 만들어서 
 memos=[]
@@ -12,14 +12,17 @@ memos=[]
 # FastAPI를 만들어주고 
 app = FastAPI()
 
-app.post("/memos")
-def create_memo(memo):
+@app.post("/memos")
+def create_memo(memo: Memo):  # Memo 모델을 파라미터로 사용
     memos.append(memo)
     return 'memo memo append yeah!'
 
-# 루트 경로에 있는 우리의 static 파일에 있는 
-# html 을 호스팅 해줘!
-app.mount("/", 
-          StaticFiles(directory='static', html=True), 
-          name='static'
-          )
+
+# read_memo 함수를 GET 요청에 등록
+@app.get("/memos")
+def read_memo():
+    return memos
+
+
+# 루트 경로에 있는 static 파일 호스팅
+app.mount("/", StaticFiles(directory='static', html=True), name='static')

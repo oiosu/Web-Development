@@ -1,24 +1,6 @@
 // app.js 에서 가장 먼저 필요한것
 // 우리가 만든 텍스트를 서버로 보내서
 // 메모를 생성하는 과정이 필요하다.
-
-// 4. memos값을 html 에 추가하기
-function displayMemo(memo) {
-  const ul = document.querySelector("#memo-ul");
-  const li = document.createElement("li");
-  li.innerText = `[id:${memo.id}] ${memo.content}`;
-  ul.appendChild(li);
-}
-
-// 3. READ
-async function readMemo() {
-  const res = await fetch("/memos");
-  const jsonRes = await res.json();
-  const ul = document.querySelector("#memo-ul");
-  ul.innerHTML = "";
-  jsonRes.forEach(displayMemo);
-}
-
 // 2. 서버에게 요청보내기
 // await는 async와 같이 작성해야 한다.
 async function createMemo(value) {
@@ -42,9 +24,9 @@ async function createMemo(value) {
       content: value,
     }),
   });
-  readMemo();
+  const jsonRes = await res.json();
+  console.log(jsonRes);
 }
-
 // 1. 생성하는 함수
 function handleSubmit(event) {
   // redirect 방지하기
@@ -55,8 +37,5 @@ function handleSubmit(event) {
   //   input에 있는 value 값 넘겨주기
   createMemo(input.value);
 }
-
 const form = document.querySelector("#memo-form");
-form.addEventListener("submit", handleSubmit);
-
-readMemo();
+form.addEventListener("submit", createMemo);
