@@ -294,3 +294,91 @@ readMemo();
 
 ##### 6. update
 
+(1) app.js
+
+```js
+// 5. 버튼 동작 
+async function editMemo(event) {
+  const id = event.target.dataset.id;
+  const editInput = prompt("write here hehe");
+  // 값을 받았으니 요청 보내기 
+  const res = await fetch(`/memo/${id}`, {
+    // 특정값이 있을 때 이값으로 바꿔줘 = PUT
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id,
+      content: editInput,
+    }),
+  });
+}
+
+// 4. memos값을 html 에 추가하기
+function displayMemo(memo) {
+  const ul = document.querySelector("#memo-ul");
+
+  const li = document.createElement("li");
+  li.innerText = `[id:${memo.id}] ${memo.content}`;
+
+  editBtn.innerText = "edit content";
+  editBtn.addEventListener("click", editMemo);
+  // 특정 메모의 값을 바꾸려면 특정 메모 id가 몇번인지 알아야한다.
+  // id를 알기위해 editbtn에 data로 넣어주기
+  // data.id를 dataset이라고 부른다. 
+  // dataset이라는 속성에 id라는 값에 메모의 id를 넣어준다.
+  editBtn.dataset.id = memo.id;
+
+  li.appendChild(editBtn);
+  ul.appendChild(li);
+
+}
+
+
+```
+
+(2) main.py
+
+```python
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
+
+# 객체로 어떤 request body로 받으려면 메모라는 클래스를 지정해줘야한다. 
+class Memo(BaseModel):
+    id:int
+    content:str
+# memos라는 배열을 만들어서 
+memos=[]
+
+# FastAPI를 만들어주고 
+app = FastAPI()
+
+@app.post("/memos")
+def create_memo(memo: Memo):  # Memo 모델을 파라미터로 사용
+    memos.append(memo)
+    return 'memo memo append yeah!'
+
+
+# read_memo 함수를 GET 요청에 등록
+@app.get("/memos")
+def read_memo():
+    return memos
+
+# put
+@app.put("/memos/{memo_id}")
+def put_memo(req_memo:Memo):
+    for memo in memos:
+        if memo.id==req_memo.id:
+            memo.content=req_memo.content
+            return "done"
+    return "no back back"
+
+
+# 루트 경로에 있는 static 파일 호스팅
+app.mount("/", StaticFiles(directory='static', html=True), name='static')
+```
+
+
+
