@@ -31,6 +31,16 @@ def put_memo(req_memo:Memo):
             return "done"
     return "no back back"
 
+# 삭제하기 
+@app.delete("/memos/{memo_id}")
+def delete_memo(memo_id):
+    # enumerate : index와 값을 같이 뽑아주는 함수
+    for index,memo in enumerate(memos):
+        if memo.id==memo_id:
+            memos.pop(index)
+            return "bye"
+        return "no memo"
+
 
 # 루트 경로에 있는 static 파일 호스팅
 app.mount("/", StaticFiles(directory='static', html=True), name='static')

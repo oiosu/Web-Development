@@ -382,3 +382,30 @@ app.mount("/", StaticFiles(directory='static', html=True), name='static')
 
 
 
+##### 7. delete
+
+(1) app.js
+
+```js
+async function deleteMemo(event) {
+  const id = event.target.dataset.id;
+  const res = await fetch(`/memo/'${id}`, {
+    method: "DELETE",
+  });
+  readMemo()
+}
+```
+
+(2) main.py
+
+```python
+@app.delete("/memos/{memo_id}")
+def delete_memo(memo_id):
+    # enumerate : index와 값을 같이 뽑아주는 함수
+    for index,memo in enumerate(memos):
+        if memo.id==memo_id:
+            memos.pop(index)
+            return "bye"
+        return "no memo"
+```
+

@@ -2,6 +2,8 @@
 // 우리가 만든 텍스트를 서버로 보내서
 // 메모를 생성하는 과정이 필요하다.
 
+const { del } = require("request");
+
 // 5. 버튼 동작 
 async function editMemo(event) {
   const id = event.target.dataset.id;
@@ -20,13 +22,24 @@ async function editMemo(event) {
   });
 }
 
+// 6. 삭제하기 
+async function deleteMemo(event) {
+  const id = event.target.dataset.id;
+  const res = await fetch(`/memo/'${id}`, {
+    method: "DELETE",
+  });
+  readMemo()
+}
+
+
 // 4. memos값을 html 에 추가하기
 function displayMemo(memo) {
   const ul = document.querySelector("#memo-ul");
 
   const li = document.createElement("li");
-  li.innerText = `[id:${memo.id}] ${memo.content}`;
+  li.innerText = `${memo.content}`;
 
+  const edit = document.createElement("button");
   editBtn.innerText = "edit content";
   editBtn.addEventListener("click", editMemo);
   // 특정 메모의 값을 바꾸려면 특정 메모 id가 몇번인지 알아야한다.
@@ -34,8 +47,15 @@ function displayMemo(memo) {
   // data.id를 dataset이라고 부른다. 
   // dataset이라는 속성에 id라는 값에 메모의 id를 넣어준다.
   editBtn.dataset.id = memo.id;
+  delBtn.innerText = "delete";
+  delBtn.addEventListener("click", deleteMemo);
+  delBtn.dataset.id = memo.id;
+
+  //삭제하기 
+  const delBtn = document.createElement("button");
 
   li.appendChild(editBtn);
+  li.appendChild(delBtn);
   ul.appendChild(li);
 
 }
