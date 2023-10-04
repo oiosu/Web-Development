@@ -2,12 +2,42 @@
 // 우리가 만든 텍스트를 서버로 보내서
 // 메모를 생성하는 과정이 필요하다.
 
+// 5. 버튼 동작 
+async function editMemo(event) {
+  const id = event.target.dataset.id;
+  const editInput = prompt("write here hehe");
+  // 값을 받았으니 요청 보내기 
+  const res = await fetch(`/memo/${id}`, {
+    // 특정값이 있을 때 이값으로 바꿔줘 = PUT
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id,
+      content: editInput,
+    }),
+  });
+}
+
 // 4. memos값을 html 에 추가하기
 function displayMemo(memo) {
   const ul = document.querySelector("#memo-ul");
+
   const li = document.createElement("li");
   li.innerText = `[id:${memo.id}] ${memo.content}`;
+
+  editBtn.innerText = "edit content";
+  editBtn.addEventListener("click", editMemo);
+  // 특정 메모의 값을 바꾸려면 특정 메모 id가 몇번인지 알아야한다.
+  // id를 알기위해 editbtn에 data로 넣어주기
+  // data.id를 dataset이라고 부른다. 
+  // dataset이라는 속성에 id라는 값에 메모의 id를 넣어준다.
+  editBtn.dataset.id = memo.id;
+
+  li.appendChild(editBtn);
   ul.appendChild(li);
+
 }
 
 // 3. READ

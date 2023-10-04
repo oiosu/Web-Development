@@ -23,6 +23,14 @@ def create_memo(memo: Memo):  # Memo 모델을 파라미터로 사용
 def read_memo():
     return memos
 
+@app.put("/memos/{memo_id}")
+def put_memo(req_memo:Memo):
+    for memo in memos:
+        if memo.id==req_memo.id:
+            memo.content=req_memo.content
+            return "done"
+    return "no back back"
+
 
 # 루트 경로에 있는 static 파일 호스팅
 app.mount("/", StaticFiles(directory='static', html=True), name='static')
